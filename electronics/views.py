@@ -1,3 +1,4 @@
+from rest_framework import filters
 from rest_framework.generics import CreateAPIView, ListAPIView, \
     RetrieveAPIView, UpdateAPIView, DestroyAPIView
 
@@ -16,6 +17,8 @@ class ElementListApiView(ListAPIView):
     """ Отображает все объекты сети. """
     queryset = Element.objects.all()
     serializer_class = ElementSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['country']
 
 
 class ElementRetrieveApiView(RetrieveAPIView):
