@@ -22,7 +22,8 @@ class Product(models.Model):
 
 class Element(models.Model):
     """ Модель звеньев сети. """
-    title = models.CharField(max_length=100, verbose_name='Название')
+    title = models.CharField(max_length=100, verbose_name='Название',
+                             **options)
     email = models.EmailField(max_length=100, verbose_name='E-mail', **options)
     country = models.CharField(max_length=100, verbose_name='Страна',
                                **options)
@@ -31,7 +32,7 @@ class Element(models.Model):
     house_number = models.CharField(max_length=10, verbose_name='Номер дома',
                                     **options)
     product = models.ManyToManyField(Product, related_name='element',
-                                     verbose_name='Продукты')
+                                     verbose_name='Продукты', **options)
     supplier = models.ForeignKey('Element', on_delete=models.SET_NULL,
                                  related_name='element',
                                  verbose_name='Поставщик', **options)
