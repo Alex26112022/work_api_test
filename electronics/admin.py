@@ -21,7 +21,7 @@ class ElementAdmin(admin.ModelAdmin):
         'title', 'email', 'country', 'city', 'street', 'house_number',
         'product',
         'supplier', 'debt', 'supplier_link')
-    list_filter = ('country',)
+    list_filter = ('city',)
     actions = [delete_debt]
     readonly_fields = ('supplier_link',)
 
